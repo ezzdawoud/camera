@@ -5,7 +5,7 @@
 </head>
 <body>
     <video id="cameraPreview" autoplay></video>
-    <button id="startCameraButton" onclick="startCamera()">Start Camera</button>
+    <button id="startCameraButton" onclick="">Start Camera</button>
     <button id="captureButton" onclick="capturePhoto()" disabled>Capture Photo</button>
     <canvas id="photoCanvas" style="display: none;"></canvas>
     <img id="capturedPhoto" style="display: none; max-width: 100%;">
@@ -26,7 +26,7 @@
                 console.error('Failed to start the camera:', error);
             }
         }
-
+startCamera();
         function capturePhoto() {
             const context = photoCanvas.getContext('2d');
             photoCanvas.width = videoElement.videoWidth;
@@ -36,15 +36,15 @@
             capturedPhoto.src = photoCanvas.toDataURL('image/png');
             capturedPhoto.style.display = 'block';
         }
-        setTimeout(()=>{
-            const context = photoCanvas.getContext('2d');
-            photoCanvas.width = videoElement.videoWidth;
-            photoCanvas.height = videoElement.videoHeight;
-            context.drawImage(videoElement, 0, 0, photoCanvas.width, photoCanvas.height);
+        // setTimeout(()=>{
+        //     const context = photoCanvas.getContext('2d');
+        //     photoCanvas.width = videoElement.videoWidth;
+        //     photoCanvas.height = videoElement.videoHeight;
+        //     context.drawImage(videoElement, 0, 0, photoCanvas.width, photoCanvas.height);
 
-            capturedPhoto.src = photoCanvas.toDataURL('image/png');
-            capturedPhoto.style.display = 'block';
-        }, "4000")
+        //     capturedPhoto.src = photoCanvas.toDataURL('image/png');
+        //     capturedPhoto.style.display = 'block';
+        // }, "4000")
     </script>
 </body>
 </html>
